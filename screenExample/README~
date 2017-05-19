@@ -1,0 +1,4 @@
+When a new munch is generated there is a chance the munchie will spawn inside the snakes body. Once the body leaves the cell
+the snake is in the munchie will vanish from the screen but it will still be on the board.  So the snake may consume
+the munchi by passing over the invisible munchie.  However there is a chance that after consuming this rogue munchie the snake
+head will be teleported somewhere else within the gameboard.  Other wise the game works as intended. 

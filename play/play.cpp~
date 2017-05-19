@@ -1,0 +1,33 @@
+#include<iostream>
+using namespace std;
+/*
+void reverseList( int  )
+{
+  
+  
+  while( n != 0 )
+    {
+      int revIdx = ( n - 1 );
+      int bomb = a[ revIdx ];
+      a[ a.size() - n ];
+      return reverseList( a , n - 1);
+    }
+  
+  return;
+}
+*/
+int main()
+{
+
+   cout << "hello world" << endl;
+
+   int a[ 4 ] = {1, 2, 3, 4 };
+
+   // reverseList( a , 3 );
+   cout << sizeof( a )  << endl;
+   
+   for(int i = 0; i < 3 ; i++)
+     cout << a[i] << endl; 
+   
+   return 0;
+}

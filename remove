@@ -1,0 +1,28 @@
+TreeNode* BinSearchTree::local_remove( TreeNode* root, int v ){
+  if( root->value() == v )
+    return root;
+  if( root->value() < v ) local_remove( root->rightSubtree(), v);
+  if( root->value() > v ) local_remove( root->leftSubtree(), v);
+
+  else{
+    if( root->leftSubtree() == nullptr ) {
+      TreeNode* tmp = root->rightSubtree();
+      free(root);
+      return tmp;
+    }
+
+    else if( root->rightSubtree() == nullptr ){
+      TreeNode* tmp = leftSubtree();
+      free( root );
+      return tmp;
+    }
+
+    TreeNode* tmp = root->rightSubtree();
+    while( tmp->leftSubtree() != nullptr ) tmp = tmp->leftSubtree();
+    root->data = tmp->data;
+
+    root->rightSubtree() = local_remove( root->rightSubtree(), tmp->data);
+
+  }
+  return root;
+}

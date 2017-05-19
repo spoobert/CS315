@@ -1,0 +1,9 @@
+ CFLAGS = -g -std=c++11 -Wall
+
+all: play.x
+
+play.x: play.o
+	g++ $(CFLAGS) play.o -o play.x
+
+play.o: play.cpp
+	g++ $(FLAGS) -c  play.cpp -o play.o

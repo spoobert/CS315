@@ -1,0 +1,89 @@
+#include "reclists.hpp"
+#include "solutions.hpp"
+#include <iostream>
+
+// As you implement functions in this file, you should add the
+// function-prototype to the solutions.hpp. The function-prototypes
+// for append and reverse are already in solutions.hpp.
+
+list append( list p, list q )
+{
+     if( is_null( p ) ) return q;
+     return cons( car(p), append( cdr(p), q ));
+}
+
+list reverse( list p )
+{
+     if( is_null(p) || is_atom(p) ) return p;
+     return append( reverse( cdr(p) ), cons(car(p), null() )) ;
+}
+
+
+
+bool is_lat(list p)
+{
+    if(is_null( p ) )
+    return true;
+
+    else if( is_atom( car( p ) ) )//check that its an atom
+    return is_lat( cdr( p ) );
+
+    return false;
+
+}
+
+bool member( list p , list q )
+{
+
+  if(is_null( q ) )
+    return false;
+
+  if( eq( p, car( q ) ) )
+    return true;
+
+  if( ! is_atom( car( q ) ) && ! is_null( car( q ) ) )
+    return member( p, car( q ) );
+
+  return member( p, cdr( q ) );
+}
+
+list last( list p )
+{
+    if( is_null( cdr( p ) ) )
+      return p;
+
+    return last( cdr( p ) );
+
+}
+
+list list_pair( list p, list q )
+{
+  // (a b c) (d e f)
+  // ( (a d) (b e) (c f) )
+  if( is_null( p ) ) return null();
+
+  return   cons(                                          //constructs final list
+                cons( car( p ), cons( car( q ),null() )),//pairs two atoms in a new list
+                list_pair( cdr( p ), cdr( q ) ) );//cdr untill null then returns null
+}
+
+list firsts( list p )
+{
+  // ( ( a b ) ( c d ) ( e f ) ) ---> ( a c e )
+  if( is_null( p ) ) return null();
+
+  return cons( car( car( p ) ), firsts( cdr( p ) ) );
+
+}
+
+list flat( list p )
+{
+  if( is_null( p ) )
+    return p;
+
+  if( is_atom( car( p ) ) )
+    return cons( car( p ), flat( car( p ) ) );
+  
+  else
+    return cdr( p );
+} G   
